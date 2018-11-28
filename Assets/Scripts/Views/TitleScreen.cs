@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TitleScreen : View {
 
-	// Use this for initialization
-	void Start () {
-		
+    // Use this for initialization
+    void Start () {
+    
 	}
 	
 	// Update is called once per frame
@@ -22,6 +22,6 @@ public class TitleScreen : View {
 
     public void OnExitButtonClick() {
         Debug.Log("*Exit*");
-        //Application.Quit();
+        Application.Quit();
     }
 }
