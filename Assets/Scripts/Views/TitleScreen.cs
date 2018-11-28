@@ -16,8 +16,8 @@ public class TitleScreen : View {
 
     public void OnStartButtonClick() {
         Debug.Log("*Start*");
-        //Load the next scene when start button is clicked
-        //LoadManager.Instance.LoadScene("");
+        //load the next scene when start button is clicked
+        LoadManager.Instance.LoadScene("ShootingTest");
     }
 
     public void OnExitButtonClick() {
