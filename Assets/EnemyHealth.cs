@@ -21,8 +21,8 @@ public class EnemyHealth : MonoBehaviour
     {
         // Setting up the references.
         //anim = GetComponent<Animator>();
-       // enemyAudio = GetComponent<AudioSource>();
-       // hitParticles = GetComponentInChildren<ParticleSystem>();
+        //enemyAudio = GetComponent<AudioSource>();
+        //hitParticles = GetComponentInChildren<ParticleSystem>();
         capsuleCollider = GetComponent<CapsuleCollider>();
 
         // Setting the current health when the enemy first spawns.
@@ -36,11 +36,12 @@ public class EnemyHealth : MonoBehaviour
         {
             // ... move the enemy down by the sinkSpeed per second.
             transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
+            StartSinking();
         }
     }
 
 
-    public void TakeDamage(int amount, Vector3 hitPoint)
+    public void TakeDamage(int amount)
     {
         // If the enemy is dead...
         if (isDead)
@@ -48,16 +49,14 @@ public class EnemyHealth : MonoBehaviour
             return;
 
         // Play the hurt sound effect.
-        enemyAudio.Play();
+        //enemyAudio.Play();
 
         // Reduce the current health by the amount of damage sustained.
         currentHealth -= amount;
 
-        // Set the position of the particle system to where the hit was sustained.
-        hitParticles.transform.position = hitPoint;
-
         // And play the particles.
-        hitParticles.Play();
+        //hitParticles.Play();
+        Debug.Log("Has taken " + amount + " damage, HP now: " + currentHealth);
 
         // If the current health is less than or equal to zero...
         if (currentHealth <= 0)
@@ -70,25 +69,26 @@ public class EnemyHealth : MonoBehaviour
 
     void Death()
     {
+        Debug.Log("DEAD");
         // The enemy is dead.
         isDead = true;
-
+        isSinking = true;
         // Turn the collider into a trigger so shots can pass through it.
         capsuleCollider.isTrigger = true;
 
         // Tell the animator that the enemy is dead.
-        anim.SetTrigger("Dead");
+        //anim.SetTrigger("Dead");
 
         // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
-        enemyAudio.clip = deathClip;
-        enemyAudio.Play();
+        //enemyAudio.clip = deathClip;
+        //enemyAudio.Play();
     }
 
-
+    
     public void StartSinking()
     {
         // Find and disable the Nav Mesh Agent.
-        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        //GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
 
         // Find the rigidbody component and make it kinematic (since we use Translate to sink the enemy).
         GetComponent<Rigidbody>().isKinematic = true;
