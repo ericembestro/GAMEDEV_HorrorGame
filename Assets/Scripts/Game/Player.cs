@@ -20,13 +20,15 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (life > 0) {
-            lifedisplay.text = life.ToString();
+            lifedisplay.text = "Life: " + life.ToString();
             if (Input.GetKeyDown(KeyCode.Space)) {
                 voice.Play();
                 life -= 50;
             }
         }
-        else LoadManager.Instance.LoadScene("ShootingTest");
-        
+        else {
+            //LoadManager.Instance.LoadScene("ShootingTest");
+            ViewHandler.Instance.Show("GameOverScreen");
+        }
 	}
 }
