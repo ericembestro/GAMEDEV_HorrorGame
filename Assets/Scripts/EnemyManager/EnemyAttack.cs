@@ -52,7 +52,7 @@ public class EnemyAttack : MonoBehaviour
         if (collision.gameObject == player)
         {
             // ... the player is no longer in range.
-            playerInRange = false;
+            playerInRange = true;
         }
     }
 
