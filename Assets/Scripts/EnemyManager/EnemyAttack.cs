@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour
     public int attackDamage = 10;               // The amount of health taken away per attack.
 
 
-    //Animator anim;                              // Reference to the animator component.
+    Animator anim;                              // Reference to the animator component.
     [SerializeField] GameObject player;                          // Reference to the player GameObject.
     [SerializeField] PlayerHealth playerHealth;                  // Reference to the player's health.
     [SerializeField] EnemyHealth enemyHealth;                    // Reference to this enemy's health.
@@ -22,7 +22,7 @@ public class EnemyAttack : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
 
@@ -56,6 +56,13 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    void OnCollisionExit(Collision collision) {
+        if (collision.gameObject == player) {
+            // ... the player is no longer in range.
+            playerInRange = false;
+        }
+    }
+
 
     void Update()
     {
@@ -66,6 +73,7 @@ public class EnemyAttack : MonoBehaviour
         if (timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
         {
             // ... attack.
+            anim.SetTrigger("Attack");
             Attack();
             Debug.Log("you are taking damage");
         }

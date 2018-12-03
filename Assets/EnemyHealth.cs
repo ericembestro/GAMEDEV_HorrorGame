@@ -4,7 +4,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public int startingHealth = 100;            // The amount of health the enemy starts the game with.
     public int currentHealth;                   // The current health the enemy has.
-    public float sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
+    public float sinkSpeed = 5.0f;              // The speed at which the enemy sinks through the floor when dead.
     public int scoreValue = 10;                 // The amount added to the player's score when the enemy dies.
     public AudioClip deathClip;                 // The sound to play when the enemy dies.
 
@@ -20,8 +20,8 @@ public class EnemyHealth : MonoBehaviour
     void Awake()
     {
         // Setting up the references.
-        //anim = GetComponent<Animator>();
-        //enemyAudio = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
+        enemyAudio = GetComponent<AudioSource>();
         //hitParticles = GetComponentInChildren<ParticleSystem>();
         capsuleCollider = GetComponent<CapsuleCollider>();
 
@@ -56,7 +56,7 @@ public class EnemyHealth : MonoBehaviour
 
         // And play the particles.
         //hitParticles.Play();
-        Debug.Log("Has taken " + amount + " damage, HP now: " + currentHealth);
+        //Debug.Log("Has taken " + amount + " damage, HP now: " + currentHealth);
 
         // If the current health is less than or equal to zero...
         if (currentHealth <= 0)
@@ -77,18 +77,18 @@ public class EnemyHealth : MonoBehaviour
         capsuleCollider.isTrigger = true;
 
         // Tell the animator that the enemy is dead.
-        //anim.SetTrigger("Dead");
+        anim.SetTrigger("Dead");
 
         // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
-        //enemyAudio.clip = deathClip;
-        //enemyAudio.Play();
+        enemyAudio.clip = deathClip;
+        enemyAudio.Play();
     }
 
     
     public void StartSinking()
     {
         // Find and disable the Nav Mesh Agent.
-        //GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
 
         // Find the rigidbody component and make it kinematic (since we use Translate to sink the enemy).
         GetComponent<Rigidbody>().isKinematic = true;
@@ -100,6 +100,6 @@ public class EnemyHealth : MonoBehaviour
        // ScoreManager.score += scoreValue;
 
         // After 2 seconds destory the enemy.
-        Destroy(gameObject, 0f);
+        Destroy(gameObject, 2f);
     }
 }
