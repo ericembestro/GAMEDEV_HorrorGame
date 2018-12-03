@@ -7,14 +7,15 @@ public class Player : MonoBehaviour {
     private int life;
     [SerializeField] private AudioSource voice;
     [SerializeField] private TextMesh lifedisplay;
-    
+    private float playertime;
+    [SerializeField] private TextMesh timedisplay;
 
 	// Use this for initialization
 	void Start () {
         //voice = GetComponent<AudioSource>();
         //voice.Play(0);
         life = 100;
-        
+        playertime = 0.0f;
 	}
 	
 	// Update is called once per frame
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour {
                 voice.Play();
                 life -= 50;
             }
+            playertime += Time.deltaTime;
+            timedisplay.text = "Time: " + playertime.ToString("F2");
         }
         else {
             //LoadManager.Instance.LoadScene("ShootingTest");
