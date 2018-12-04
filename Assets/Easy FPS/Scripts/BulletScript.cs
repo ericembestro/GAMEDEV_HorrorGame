@@ -14,7 +14,7 @@ public class BulletScript : MonoBehaviour {
 	public GameObject bloodEffect;
 	[Tooltip("Put Weapon layer and Player layer to ignore bullet raycast.")]
 	public LayerMask ignoreLayer;
-    public int damage = 5;
+    public int damage;
 
     /*
 	* Uppon bullet creation with this script attatched,
@@ -29,12 +29,19 @@ public class BulletScript : MonoBehaviour {
 					Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
 					Destroy(gameObject);
 				}
-				if(hit.transform.tag == "Dummie"){
+                if (hit.collider.tag == "Head")
+                {
+                    Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    Debug.Log("I hit a HEAD!!");
+                    hit.transform.SendMessage("TakeDamage", damage * 2);
+                }
+                if (hit.collider.tag == "Dummie"){
 					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
                     Debug.Log("I hit a dummie!");
                     hit.transform.SendMessage("TakeDamage", damage);
 				}
-			}		
+                
+            }		
 			Destroy(gameObject);
 		}
 		Destroy(gameObject, 0.1f);
