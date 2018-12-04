@@ -9,6 +9,8 @@ TagManager:
   - LevelPart
   - Dummie
   - Barricade
+  - Head
+  - Weapon
   layers:
   - Default
   - TransparentFX
