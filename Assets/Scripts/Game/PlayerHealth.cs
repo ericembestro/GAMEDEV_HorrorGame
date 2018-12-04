@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
    // Animator anim;                                              // Reference to the Animator component.
     AudioSource playerAudio;                                    // Reference to the AudioSource component.
     [SerializeField] PlayerMovementScript playerMovement;                              // Reference to the player's movement.
-    //[SerializeField] PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
+    [SerializeField] MouseLookScript playerMouse;                              // Reference to the PlayerShooting script.
     bool isDead;                                                // Whether the player is dead.
     bool damaged;                                               // True when the player gets damaged.
 
@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
         //anim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
         playerMovement = GetComponent<PlayerMovementScript>();
-        //playerShooting = GetComponentInChildren<PlayerShooting>();
+        playerMouse = GetComponentInChildren<MouseLookScript>();
         gunInventoryScript = GetComponent<GunInventory>();
         // Set the initial health of the player.
         currentHealth = startingHealth;
@@ -90,7 +90,7 @@ public class PlayerHealth : MonoBehaviour
         isDead = true;
 
         // Turn off any remaining shooting effects.
-       // playerShooting.DisableEffects();
+        //playerMouse.DisableEffects();
 
         // Tell the animator that the player is dead.
         //anim.SetTrigger("Die");
@@ -101,7 +101,7 @@ public class PlayerHealth : MonoBehaviour
 
         // Turn off the movement and shooting scripts.
         playerMovement.enabled = false;
-        // playerShooting.enabled = false;
+         playerMouse.enabled = false;
         gunInventoryScript.currentGun.GetComponent<GunScript>().enabled = false;
         gunInventoryScript.enabled = false;
         //unlock lock cursor

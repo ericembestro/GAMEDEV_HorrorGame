@@ -17,7 +17,7 @@ public class HUDScript : MonoBehaviour {
 	void Update () {
         if (!isDead) {
             timevalue += Time.deltaTime;
-            timetext.text = timevalue.ToString("F3");
+            timetext.text = "Time: " + timevalue.ToString("F3");
         }
 	}
 
