@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66247b342b7a3fe44bd48e11ef5bfc41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asRootScreen: 0
-  entranceType: 0
+  asRootScreen: 1
+  entranceType: 5
   exitType: 0
 --- !u!114 &114418639828104222
 MonoBehaviour:
