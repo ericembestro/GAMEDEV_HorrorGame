@@ -15,7 +15,7 @@ public class GameOverScreen : View {
 	}
 
     public void OnRetryButtonClick() {
-        //retry
+        LoadManager.Instance.LoadScene("ShootingTest");
     }
 
     public void OnExitButtonClick() {

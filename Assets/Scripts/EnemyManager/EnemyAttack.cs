@@ -4,7 +4,7 @@ using System.Collections;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
+    public float timeBetweenAttacks = 2f;     // The time in seconds between each attack.
     public int attackDamage = 10;               // The amount of health taken away per attack.
 
 
@@ -74,6 +74,7 @@ public class EnemyAttack : MonoBehaviour
         {
             // ... attack.
             anim.SetTrigger("Attack");
+            //Invoke("Attack", 0.3f);
             Attack();
             Debug.Log("you are taking damage");
         }

@@ -2480,7 +2480,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ba223aca2ec663841944f3d1cc09cf35, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2599,7 +2599,7 @@ MonoBehaviour:
   currentHealth: 0
   sinkSpeed: 0.5
   scoreValue: 10
-  deathClip: {fileID: 8300000, guid: 749909c18aa60524d8bfb5062779cdb6, type: 3}
+  deathClip: {fileID: 8300000, guid: bdca160714481af48bf66ada6f4b2157, type: 3}
 --- !u!114 &114191859817032630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2611,7 +2611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f064f7a00f4ecc41935db31d968f0d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 1
   attackDamage: 10
   player: {fileID: 173116, guid: c391f12a928274acab8576bb6030641d, type: 2}
   playerHealth: {fileID: 0}
@@ -2827,7 +2827,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
