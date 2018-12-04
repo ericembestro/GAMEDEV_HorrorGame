@@ -23,6 +23,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject hudObject;
     [SerializeField] private HUDScript hudScript;
 
+    private GunInventory gunInventoryScript;
+
     void Awake()
     {
         // Setting up the references.
@@ -30,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
         playerAudio = GetComponent<AudioSource>();
         playerMovement = GetComponent<PlayerMovementScript>();
         //playerShooting = GetComponentInChildren<PlayerShooting>();
-
+        gunInventoryScript = GetComponent<GunInventory>();
         // Set the initial health of the player.
         currentHealth = startingHealth;
         healthSlider.value = currentHealth;
@@ -100,7 +102,8 @@ public class PlayerHealth : MonoBehaviour
         // Turn off the movement and shooting scripts.
         playerMovement.enabled = false;
         // playerShooting.enabled = false;
-
+        gunInventoryScript.currentGun.GetComponent<GunScript>().enabled = false;
+        gunInventoryScript.enabled = false;
         //unlock lock cursor
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
