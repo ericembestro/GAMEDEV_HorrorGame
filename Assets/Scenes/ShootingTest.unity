@@ -665,7 +665,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh6586
+  m_Name: pb_Mesh123706
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -5048,7 +5048,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh6542
+  m_Name: pb_Mesh123658
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -8050,6 +8050,8 @@ MonoBehaviour:
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.7058824}
   playerMovement: {fileID: 0}
+  hudObject: {fileID: 1667515219}
+  hudScript: {fileID: 0}
 --- !u!1 &1165381451
 GameObject:
   m_ObjectHideFlags: 0
@@ -12470,6 +12472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timetext: {fileID: 1006119328}
+  isDead: 0
 --- !u!1 &1696414572
 GameObject:
   m_ObjectHideFlags: 0

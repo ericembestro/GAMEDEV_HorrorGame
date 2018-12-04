@@ -20,6 +20,8 @@ public class PlayerHealth : MonoBehaviour
     bool isDead;                                                // Whether the player is dead.
     bool damaged;                                               // True when the player gets damaged.
 
+    [SerializeField] private GameObject hudObject;
+    [SerializeField] private HUDScript hudScript;
 
     void Awake()
     {
@@ -32,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
         // Set the initial health of the player.
         currentHealth = startingHealth;
         healthSlider.value = currentHealth;
+        hudScript = hudObject.GetComponent<HUDScript>();
     }
 
 
@@ -101,6 +104,7 @@ public class PlayerHealth : MonoBehaviour
         //unlock lock cursor
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        hudScript.isDead = true;
         ViewHandler.Instance.Show("GameOverScreen");
     }
 }

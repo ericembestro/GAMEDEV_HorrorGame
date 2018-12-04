@@ -7,7 +7,7 @@ public class HUDScript : MonoBehaviour {
 
     [SerializeField] private Text timetext;
     private float timevalue;
-
+    public bool isDead = false;
 	// Use this for initialization
 	void Start () {
         timevalue = 0f;
@@ -15,7 +15,13 @@ public class HUDScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        timevalue += Time.deltaTime;
-        timetext.text = timevalue.ToString("F3");
+        if (!isDead) {
+            timevalue += Time.deltaTime;
+            timetext.text = timevalue.ToString("F3");
+        }
 	}
+
+    void deadPlayer() {
+        isDead = true;
+    }
 }
