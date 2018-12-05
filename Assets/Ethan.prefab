@@ -2690,6 +2690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf14dc53b69dda1438ee7b48f3146643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wall1: {fileID: 0}
+  wall2: {fileID: 0}
 --- !u!136 &136264011887306480
 CapsuleCollider:
   m_ObjectHideFlags: 1
