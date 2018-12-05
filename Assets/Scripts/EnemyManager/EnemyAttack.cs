@@ -15,6 +15,8 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] bool playerInRange;                         // Whether player is within the trigger collider and can be attacked.
     [SerializeField] float timer;                                // Timer for counting up to the next attack.
 
+    GameObject barricade;
+    bool barricadeInRange;
 
     void Awake()
     {
@@ -54,6 +56,10 @@ public class EnemyAttack : MonoBehaviour
             // ... the player is no longer in range.
             playerInRange = true;
         }
+        if (collision.gameObject.tag == "Barricade") {
+            barricade = collision.gameObject;
+            barricadeInRange = true;
+        }
     }
 
     void OnCollisionExit(Collision collision) {
@@ -61,6 +67,20 @@ public class EnemyAttack : MonoBehaviour
             // ... the player is no longer in range.
             playerInRange = false;
         }
+        if (collision.gameObject.tag == "Barricade") {
+            barricade = collision.gameObject;
+            barricadeInRange = false;
+        }
+    }
+    
+    void AttackBarricade(GameObject gameObject) {
+        //reset timer
+        timer = 0f;
+
+        if (gameObject.GetComponent<BarricadeHealth>().currentHealth > 0) {
+            gameObject.GetComponent<BarricadeHealth>().TakeDamage(attackDamage);
+        }
+
     }
 
 
@@ -78,6 +98,12 @@ public class EnemyAttack : MonoBehaviour
             Attack();
             Debug.Log("you are taking damage");
         }
+        if (timer >= timeBetweenAttacks && barricadeInRange && enemyHealth.currentHealth > 0) {
+            // ... attack.
+            anim.SetTrigger("Attack");
+            //Invoke("Attack", 0.3f);
+            AttackBarricade(barricade);
+        }
 
         // If the player has zero or less health...
         if (playerHealth.currentHealth <= 0)
@@ -85,7 +111,7 @@ public class EnemyAttack : MonoBehaviour
             // ... tell the animator the player is dead.
             //anim.SetTrigger("PlayerDead");
             //trigger game over scene
-            Debug.Log("you are dead");
+            //Debug.Log("you are dead");
         }
     }
 

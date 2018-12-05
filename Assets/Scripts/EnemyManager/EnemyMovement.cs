@@ -24,15 +24,5 @@ public class EnemyMovement : MonoBehaviour {
 
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        //Output the Collider's GameObject's name
-        Debug.Log(collision.collider.name);
-        if (collision.gameObject.CompareTag("Barricade"))
-        {
-            Destroy(collision.gameObject);
-        }
-
-    }
 }
 

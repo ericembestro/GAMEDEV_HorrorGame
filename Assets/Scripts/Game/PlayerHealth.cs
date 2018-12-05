@@ -25,6 +25,8 @@ public class PlayerHealth : MonoBehaviour
 
     private GunInventory gunInventoryScript;
 
+    [SerializeField] private GameObject spawner;
+
     void Awake()
     {
         // Setting up the references.
@@ -37,6 +39,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = startingHealth;
         healthSlider.value = currentHealth;
         hudScript = hudObject.GetComponent<HUDScript>();
+
+        //Cursor.visible = false;
     }
 
 
@@ -108,6 +112,7 @@ public class PlayerHealth : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         hudScript.isDead = true;
+        Destroy(spawner);
         ViewHandler.Instance.Show("GameOverScreen");
     }
 }
